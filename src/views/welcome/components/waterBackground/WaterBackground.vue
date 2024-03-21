@@ -1,12 +1,18 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import waterInit from './water'
+
+const emit = defineEmits<{ load: [] }>()
 
 const containerRef = ref(null)
 const canvasRef = ref(null)
 
+const onLoad = () => {
+  emit('load')
+}
+
 onMounted(() => {
-  waterInit(containerRef.value, canvasRef.value)
+  waterInit(containerRef.value, canvasRef.value, onLoad)
 })
 </script>
 
@@ -23,6 +29,7 @@ onMounted(() => {
   right: 0;
   bottom: 0;
   left: 0;
+  overflow: hidden;
 }
 
 .background::after {

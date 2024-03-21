@@ -10,6 +10,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["vite-plugin-glsl/ext"]
+    "types": ["vite-plugin-glsl/ext"],
+    "jsx": "preserve",
+    "jsxImportSource": "vue"
   }
 }
