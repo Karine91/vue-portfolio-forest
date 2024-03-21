@@ -2,11 +2,12 @@
 import { ref, onMounted } from 'vue'
 import WaterBackground from './components/waterBackground/WaterBackground.vue'
 import Header from './components/Header.vue'
+import WelcomeCard from './components/WelcomeCard/WelcomeCard.vue'
 
 const isLoading = ref(true)
 const isFormFlipped = ref(false)
 const btnRef = ref(null)
-const formRef = ref(null)
+const cardRef = ref(null)
 
 const onLoad = () => {
   console.log('loaded')
@@ -18,7 +19,7 @@ const toggleFlip = () => {
 }
 
 const onClickAway = (e) => {
-  if (!formRef.value.contains(e.target) && !btnRef.value.contains(e.target)) {
+  if (!cardRef.value.contains(e.target) && !btnRef.value.contains(e.target)) {
     isFormFlipped.value = false
   }
 }
@@ -43,6 +44,9 @@ onMounted(() => {
           Authorize
         </button>
       </header>
+      <div class="mainContent">
+        <WelcomeCard :isFlipped="isFormFlipped" @toggleFlip="toggleFlip" :cardRef="cardRef" />
+      </div>
     </div>
   </main>
 </template>
