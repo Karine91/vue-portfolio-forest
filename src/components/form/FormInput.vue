@@ -1,5 +1,13 @@
 <template>
-  <div :class="['form-input', { 'with-icon': !!$slots.default }]">
+  <div
+    :class="[
+      wrapperClass,
+      'form-input',
+      { 'with-icon': !!$slots.default },
+      { error: touched && !!error },
+      { valid: touched && !error }
+    ]"
+  >
     <div class="icon">
       <slot></slot>
     </div>
@@ -10,15 +18,34 @@
       :name="name"
       :placeholder="placeholder"
       v-model.trim="model"
+      @blur="onBlur"
+      v-bind="$attrs"
     />
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue'
+
 const [model] = defineModel({ required: true })
-withDefaults(defineProps<{ type?: string; name: string; placeholder: string }>(), {
-  type: 'text'
-})
+withDefaults(
+  defineProps<{
+    type?: string
+    name: string
+    placeholder: string
+    error?: string
+    wrapperClass?: string
+  }>(),
+  {
+    type: 'text'
+  }
+)
+
+const touched = ref(false)
+
+const onBlur = () => {
+  touched.value = true
+}
 </script>
 
 <style scoped lang="scss">
@@ -36,14 +63,14 @@ withDefaults(defineProps<{ type?: string; name: string; placeholder: string }>()
     transition: all ease 0.3s;
   }
 
-  .valid {
+  &.valid {
     border-color: $green;
     .icon {
       color: $green;
     }
   }
 
-  .error {
+  &.error {
     border-color: $warn;
     .icon {
       color: $warn;

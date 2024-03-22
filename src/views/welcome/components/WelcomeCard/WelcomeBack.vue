@@ -8,6 +8,20 @@ const formData = ref({
   username: '',
   password: ''
 })
+
+const errors = ref({})
+
+const validate = () => {
+  errors.value = {}
+  if (!formData.value.username) {
+    errors.value.username = 'Field is required.'
+  }
+  if (!formData.value.password) {
+    errors.value.password = 'Field is required.'
+  } else if (!formData.value.password.length < 6) {
+    errors.value.password = 'Password must be 6 characters at least.'
+  }
+}
 </script>
 
 <template>
@@ -15,10 +29,25 @@ const formData = ref({
     <h2 class="title heading-2 heading-2_offset-no">Authorization</h2>
     <div class="form-wrapper">
       <form id="formAuthorize">
-        <FormInput class="field" v-model="formData.username" name="username" placeholder="Username">
+        <FormInput
+          class="field"
+          v-model="formData.username"
+          name="username"
+          placeholder="Username"
+          @blur="validate"
+          :error="errors.username"
+        >
           <IconLogin />
         </FormInput>
-        <FormInput class="field" v-model="formData.password" type="password" placeholder="Password">
+        <FormInput
+          class="field"
+          v-model="formData.password"
+          type="password"
+          placeholder="Password"
+          @blur="validate"
+          :error="errors.password"
+          name="password"
+        >
           <IconKey />
         </FormInput>
       </form>
@@ -49,25 +78,6 @@ const formData = ref({
 
 .field {
   margin-bottom: 20px;
-}
-
-.fieldIcon {
-  background-color: #f0efe9;
-  padding: 12px 15px;
-  color: #c4cbcd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.fieldIcon.valid {
-  color: $green;
-  border-right: 1px solid $green;
-}
-
-.fieldIcon.error {
-  color: $warn;
-  border-right: 1px solid $warn;
 }
 
 .icon {

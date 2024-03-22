@@ -18,7 +18,6 @@ const toggleFlip = () => {
 }
 
 const onClickAway = (e: Event) => {
-  console.log(cardRef)
   if (
     btnRef.value &&
     cardRef.value &&
