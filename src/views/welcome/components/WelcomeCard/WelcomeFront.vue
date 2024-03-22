@@ -1,6 +1,7 @@
 <script setup lang="tsx">
 import AvaImg from '@/assets/images/ava.jpg'
-import Socials from './socials/Socials.vue'
+import Socials from './socials/SocialsList.vue'
+import { RouterLink } from 'vue-router'
 
 const NavLink = (props: { link: string; title: string }) => {
   return (
@@ -22,8 +23,8 @@ const links = [
     <div class="user-picture">
       <img :src="AvaImg" alt="" class="user-image" />
     </div>
-    <h2>Karine Hiulumian</h2>
-    <p>Developer's personal website</p>
+    <div class="name">Karine Hiulumian</div>
+    <p class="description">Developer's personal website</p>
     <Socials />
   </div>
   <ul class="navigation">
@@ -34,6 +35,20 @@ const links = [
 </template>
 
 <style lang="scss" scoped>
+.name {
+  color: $white;
+  font-size: 28px;
+  margin-bottom: 10px;
+  line-height: 1;
+  font-family: 'Roboto-Medium';
+}
+
+.description {
+  font-size: 16px;
+  font-family: 'Roboto-Regular';
+  color: rgba($white, 0.8);
+  margin-bottom: 30px;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -41,8 +56,8 @@ const links = [
 }
 .user-picture {
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   overflow: hidden;
   background-color: #fff;
   margin-top: 40px;

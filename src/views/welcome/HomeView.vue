@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import WaterBackground from './components/waterBackground/WaterBackground.vue'
-import Header from './components/Header.vue'
 import WelcomeCard from './components/WelcomeCard/WelcomeCard.vue'
 
 const isLoading = ref(true)
 const isFormFlipped = ref(false)
-const btnRef = ref(null)
-const cardRef = ref(null)
+const btnRef = ref<HTMLButtonElement | null>(null)
+const cardRef = ref<HTMLDivElement | null>(null)
 
 const onLoad = () => {
   console.log('loaded')
@@ -18,15 +17,29 @@ const toggleFlip = () => {
   isFormFlipped.value = !isFormFlipped.value
 }
 
-const onClickAway = (e) => {
-  if (!cardRef.value.contains(e.target) && !btnRef.value.contains(e.target)) {
+const onClickAway = (e: Event) => {
+  console.log(cardRef)
+  if (
+    btnRef.value &&
+    cardRef.value &&
+    !cardRef.value.contains(e.target as Node) &&
+    !btnRef.value.contains(e.target as Node)
+  ) {
     isFormFlipped.value = false
   }
 }
 
 onMounted(() => {
-  console.log(btnRef.value)
+  document.addEventListener('click', onClickAway)
 })
+
+onUnmounted(() => {
+  document.removeEventListener('click', onClickAway)
+})
+
+function functionRef(el: any) {
+  cardRef.value = el
+}
 </script>
 
 <template>
@@ -35,7 +48,7 @@ onMounted(() => {
     <WaterBackground @load="onLoad" />
 
     <div class="mainWrapper">
-      <header>
+      <header class="header">
         <button
           :class="['btnAuth', { btnAuthHide: isFormFlipped }]"
           ref="btnRef"
@@ -45,7 +58,11 @@ onMounted(() => {
         </button>
       </header>
       <div class="mainContent">
-        <WelcomeCard :isFlipped="isFormFlipped" @toggleFlip="toggleFlip" :cardRef="cardRef" />
+        <WelcomeCard
+          :isFlipped="isFormFlipped"
+          @toggleFlip="toggleFlip"
+          :functionRef="functionRef"
+        />
       </div>
     </div>
   </main>

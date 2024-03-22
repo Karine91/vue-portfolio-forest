@@ -6,11 +6,11 @@
   </ul>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import SocialItem from './SocialItem.vue'
-import FacebookIcon from '@/assets/icons/facebook-logo.jsx'
-import GitHubIcon from '@/assets/icons/github.jsx'
-import LinkedInIcon from '@/assets/icons/in.jsx'
+import FacebookIcon from '@/components/icons/IconFacebook.vue'
+import GitHubIcon from '@/components/icons/IconGithub.vue'
+import LinkedInIcon from '@/components/icons/IconLinkedin.vue'
 
 const socials = [
   {

@@ -1,14 +1,15 @@
 <script lang="ts" setup>
+import type { VNodeRef } from 'vue'
 import WelcomeBack from './WelcomeBack.vue'
 import WelcomeFront from './WelcomeFront.vue'
-import type { Ref } from 'vue'
+
 const emit = defineEmits<{ toggleFlip: [] }>()
 
-const props = defineProps<{ cardRef: Ref<HTMLDivElement | null>; isFlipped: boolean }>()
+const props = defineProps<{ isFlipped: boolean; functionRef: VNodeRef }>()
 </script>
 
 <template>
-  <div class="welcome-card" :class="{ flipped: isFlipped }" ref="props.cardRef">
+  <div class="welcome-card" :class="{ flipped: isFlipped }" :ref="props.functionRef">
     <div class="front">
       <WelcomeFront />
     </div>

@@ -12,6 +12,7 @@
     },
     "types": ["vite-plugin-glsl/ext"],
     "jsx": "preserve",
-    "jsxImportSource": "vue"
+    "jsxImportSource": "vue",
+    "allowImportingTsExtensions": true
   }
 }
