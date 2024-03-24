@@ -1,5 +1,6 @@
 <template>
   <div
+    :ref="functionRef"
     :class="[
       wrapperClass,
       'form-input',
@@ -21,11 +22,14 @@
       @blur="onBlur"
       v-bind="$attrs"
     />
+    <TheTooltip v-if="touched && !!error" :coords="coords">{{ error }}</TheTooltip>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import TheTooltip from '@/components/tooltip/TheTooltip.vue'
+import { useTooltip } from '@/hooks/useTooltip.ts'
 
 const [model] = defineModel({ required: true })
 withDefaults(
@@ -42,6 +46,7 @@ withDefaults(
 )
 
 const touched = ref(false)
+const { functionRef, coords } = useTooltip()
 
 const onBlur = () => {
   touched.value = true

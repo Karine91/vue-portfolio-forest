@@ -4,21 +4,28 @@ import FormInput from '@/components/form/FormInput.vue'
 import IconLogin from '@/components/icons/IconLogin.vue'
 import IconKey from '@/components/icons/IconKey.vue'
 
-const formData = ref({
+interface IFormData {
+  username: string
+  password: string
+}
+
+const formData = ref<IFormData>({
   username: '',
   password: ''
 })
 
-const errors = ref({})
+type ErrorType = Record<keyof IFormData, string>
+
+const errors = ref<ErrorType>({} as ErrorType)
 
 const validate = () => {
-  errors.value = {}
+  errors.value = {} as ErrorType
   if (!formData.value.username) {
     errors.value.username = 'Field is required.'
   }
   if (!formData.value.password) {
     errors.value.password = 'Field is required.'
-  } else if (!formData.value.password.length < 6) {
+  } else if (formData.value.password.length < 6) {
     errors.value.password = 'Password must be 6 characters at least.'
   }
 }
@@ -30,7 +37,7 @@ const validate = () => {
     <div class="form-wrapper">
       <form id="formAuthorize">
         <FormInput
-          class="field"
+          wrapper-class="field"
           v-model="formData.username"
           name="username"
           placeholder="Username"
@@ -40,7 +47,7 @@ const validate = () => {
           <IconLogin />
         </FormInput>
         <FormInput
-          class="field"
+          wrapper-class="field"
           v-model="formData.password"
           type="password"
           placeholder="Password"
