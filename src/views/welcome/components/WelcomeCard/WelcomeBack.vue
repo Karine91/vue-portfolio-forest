@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import FormInput from '@/components/form/FormInput.vue'
 import IconLogin from '@/components/icons/IconLogin.vue'
 import IconKey from '@/components/icons/IconKey.vue'
+
+const props = defineProps<{ isFlipped: boolean }>()
 
 interface IFormData {
   username: string
@@ -14,11 +16,18 @@ const formData = ref<IFormData>({
   password: ''
 })
 
+const touchedRefs = ref<Record<keyof IFormData, boolean>>({
+  username: false,
+  password: false
+})
+
 type ErrorType = Record<keyof IFormData, string>
 
 const errors = ref<ErrorType>({} as ErrorType)
 
-const validate = () => {
+const validate = (e: Event) => {
+  const field = (e.target as HTMLInputElement).name as keyof IFormData
+  touchedRefs.value[field] = true
   errors.value = {} as ErrorType
   if (!formData.value.username) {
     errors.value.username = 'Field is required.'
@@ -29,6 +38,16 @@ const validate = () => {
     errors.value.password = 'Password must be 6 characters at least.'
   }
 }
+
+watch(props, (newVal) => {
+  if (!newVal.isFlipped) {
+    errors.value = {} as ErrorType
+    formData.value.username = ''
+    formData.value.password = ''
+    touchedRefs.value.username = false
+    touchedRefs.value.password = false
+  }
+})
 </script>
 
 <template>
@@ -43,6 +62,8 @@ const validate = () => {
           placeholder="Username"
           @blur="validate"
           :error="errors.username"
+          :touched="touchedRefs.username"
+          tooltip-placement="right"
         >
           <IconLogin />
         </FormInput>
@@ -53,7 +74,9 @@ const validate = () => {
           placeholder="Password"
           @blur="validate"
           :error="errors.password"
+          :touched="touchedRefs.password"
           name="password"
+          tooltip-placement="left"
         >
           <IconKey />
         </FormInput>

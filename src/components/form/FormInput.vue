@@ -5,7 +5,7 @@
       wrapperClass,
       'form-input',
       { 'with-icon': !!$slots.default },
-      { error: touched && !!error },
+      { error: showError },
       { valid: touched && !error }
     ]"
   >
@@ -19,38 +19,41 @@
       :name="name"
       :placeholder="placeholder"
       v-model.trim="model"
-      @blur="onBlur"
       v-bind="$attrs"
     />
-    <TheTooltip v-if="touched && !!error" :coords="coords">{{ error }}</TheTooltip>
+    <TheTooltip v-if="touched && !!error" :coords="coords" :placement="tooltipPlacement">{{
+      error
+    }}</TheTooltip>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
 import TheTooltip from '@/components/tooltip/TheTooltip.vue'
-import { useTooltip } from '@/hooks/useTooltip.ts'
+import { useTooltip, type TooltipPlacement } from '@/hooks/useTooltip.ts'
 
 const [model] = defineModel({ required: true })
-withDefaults(
+const props = withDefaults(
   defineProps<{
     type?: string
     name: string
     placeholder: string
     error?: string
     wrapperClass?: string
+    touched: boolean
+    tooltipPlacement?: TooltipPlacement
   }>(),
   {
     type: 'text'
   }
 )
 
-const touched = ref(false)
-const { functionRef, coords } = useTooltip()
+const showError = computed(() => props.touched && !!props.error)
 
-const onBlur = () => {
-  touched.value = true
-}
+const { functionRef, coords } = useTooltip({
+  placement: props.tooltipPlacement,
+  enable: showError
+})
 </script>
 
 <style scoped lang="scss">

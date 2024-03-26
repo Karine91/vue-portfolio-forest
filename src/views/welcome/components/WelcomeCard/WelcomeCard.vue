@@ -14,7 +14,7 @@ const props = defineProps<{ isFlipped: boolean; functionRef: VNodeRef }>()
       <WelcomeFront />
     </div>
     <div class="back">
-      <WelcomeBack />
+      <WelcomeBack :isFlipped="isFlipped" />
     </div>
   </div>
 </template>
