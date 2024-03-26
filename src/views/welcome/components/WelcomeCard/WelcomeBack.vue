@@ -3,30 +3,35 @@ import { ref, watch } from 'vue'
 import FormInput from '@/components/form/FormInput.vue'
 import IconLogin from '@/components/icons/IconLogin.vue'
 import IconKey from '@/components/icons/IconKey.vue'
+import CheckBox from '@/components/form/CheckBox.vue'
 
 const props = defineProps<{ isFlipped: boolean }>()
 
 interface IFormData {
   username: string
   password: string
+  robotCheck: boolean
 }
 
 const formData = ref<IFormData>({
   username: '',
-  password: ''
+  password: '',
+  robotCheck: false
 })
 
-const touchedRefs = ref<Record<keyof IFormData, boolean>>({
+type ValidationFields = keyof Omit<IFormData, 'robotCheck'>
+
+const touchedRefs = ref<Record<ValidationFields, boolean>>({
   username: false,
   password: false
 })
 
-type ErrorType = Record<keyof IFormData, string>
+type ErrorType = Record<ValidationFields, string>
 
 const errors = ref<ErrorType>({} as ErrorType)
 
 const validate = (e: Event) => {
-  const field = (e.target as HTMLInputElement).name as keyof IFormData
+  const field = (e.target as HTMLInputElement).name as ValidationFields
   touchedRefs.value[field] = true
   errors.value = {} as ErrorType
   if (!formData.value.username) {
@@ -55,31 +60,39 @@ watch(props, (newVal) => {
     <h2 class="title heading-2 heading-2_offset-no">Authorization</h2>
     <div class="form-wrapper">
       <form id="formAuthorize">
-        <FormInput
-          wrapper-class="field"
-          v-model="formData.username"
-          name="username"
-          placeholder="Username"
-          @blur="validate"
-          :error="errors.username"
-          :touched="touchedRefs.username"
-          tooltip-placement="right"
-        >
-          <IconLogin />
-        </FormInput>
-        <FormInput
-          wrapper-class="field"
-          v-model="formData.password"
-          type="password"
-          placeholder="Password"
-          @blur="validate"
-          :error="errors.password"
-          :touched="touchedRefs.password"
-          name="password"
-          tooltip-placement="left"
-        >
-          <IconKey />
-        </FormInput>
+        <div class="innerForm">
+          <FormInput
+            wrapper-class="field"
+            v-model="formData.username"
+            name="username"
+            placeholder="Username"
+            @blur="validate"
+            :error="errors.username"
+            :touched="touchedRefs.username"
+            tooltip-placement="right"
+          >
+            <IconLogin />
+          </FormInput>
+          <FormInput
+            wrapper-class="field"
+            v-model="formData.password"
+            type="password"
+            placeholder="Password"
+            @blur="validate"
+            :error="errors.password"
+            :touched="touchedRefs.password"
+            name="password"
+            tooltip-placement="left"
+          >
+            <IconKey />
+          </FormInput>
+          <CheckBox
+            name="no-robot"
+            id="no-robot"
+            label="I'm a human"
+            v-model="formData.robotCheck"
+          />
+        </div>
       </form>
     </div>
   </div>
@@ -97,6 +110,7 @@ watch(props, (newVal) => {
 
 .form {
   flex-grow: 1;
+  width: 100%;
 }
 
 .innerForm {
@@ -108,6 +122,7 @@ watch(props, (newVal) => {
 
 .field {
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .icon {
