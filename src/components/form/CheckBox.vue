@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import CheckIcon from '@/components/icons/CheckIcon.vue'
-defineProps<{ id: string; name: string; label: string }>()
+const props = defineProps<{ id: string; name: string; label: string; error?: boolean }>()
 const model = defineModel({ required: true })
-console.log(model)
+console.log(props.error)
 </script>
 
 <template>
-  <div class="checkbox">
+  <div :class="['checkbox', { error }]">
     <div class="checkbox-input-wrapper">
       <input
         :class="['input', { checked: model }]"
@@ -27,6 +27,12 @@ console.log(model)
 .checkbox {
   display: flex;
   align-items: center;
+
+  &.error {
+    .checkbox-label {
+      border: 2px solid $warn;
+    }
+  }
 }
 
 .checkbox-input-wrapper {

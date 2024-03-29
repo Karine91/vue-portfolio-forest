@@ -6,6 +6,9 @@ import WelcomeFront from './WelcomeFront.vue'
 const emit = defineEmits<{ toggleFlip: [] }>()
 
 const props = defineProps<{ isFlipped: boolean; functionRef: VNodeRef }>()
+const toggleFlip = () => {
+  emit('toggleFlip')
+}
 </script>
 
 <template>
@@ -14,7 +17,7 @@ const props = defineProps<{ isFlipped: boolean; functionRef: VNodeRef }>()
       <WelcomeFront />
     </div>
     <div class="back">
-      <WelcomeBack :isFlipped="isFlipped" />
+      <WelcomeBack :isFlipped="isFlipped" @toggleFlip="toggleFlip" />
     </div>
   </div>
 </template>
