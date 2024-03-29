@@ -42,7 +42,7 @@ const validateInputHelper = () => {
   if (!formData.value.password) {
     errors.password = 'Field is required.'
   } else if (formData.value.password.length < 6) {
-    errors.password = 'Password must be 6 characters at least.'
+    errors.password = 'Password must have 6 characters at least.'
   }
   return errors
 }
