@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import WaterBackground from './components/waterBackground/WaterBackground.vue'
 import WelcomeCard from './components/WelcomeCard/WelcomeCard.vue'
+import Preloader from '@/components/ThePreloader.vue'
 
 const isLoading = ref(true)
 const isFormFlipped = ref(false)
@@ -43,10 +44,12 @@ function functionRef(el: any) {
 
 <template>
   <main>
-    <div v-if="isLoading">Loading...</div>
     <WaterBackground @load="onLoad" />
+    <div v-if="isLoading" class="preloader-wrapper">
+      <Preloader />
+    </div>
 
-    <div class="mainWrapper">
+    <div v-else class="mainWrapper">
       <header class="header">
         <button
           :class="['btnAuth', { btnAuthHide: isFormFlipped }]"
@@ -68,6 +71,15 @@ function functionRef(el: any) {
 </template>
 
 <style lang="scss" scoped>
+.preloader-wrapper {
+  background-image: url('@/assets/images/preloader/forest_prel_bg.jpg');
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
 main {
   height: 100vh;
   @media (max-width: 968px) and (orientation: landscape) {

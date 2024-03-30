@@ -29,6 +29,7 @@ const styling = computed(() => {
   color: $white;
   transform: translateX(-50%);
   z-index: 99;
+  max-width: 200px;
 
   &:before {
     content: '';
