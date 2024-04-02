@@ -3,15 +3,16 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import WaterBackground from './components/waterBackground/WaterBackground.vue'
 import WelcomeCard from './components/WelcomeCard/WelcomeCard.vue'
 import Preloader from '@/components/ThePreloader.vue'
+import AvaImg from '@/assets/images/ava.jpg'
 
-const isLoading = ref(true)
+const assetsLoaded = ref(false)
 const isFormFlipped = ref(false)
 const btnRef = ref<HTMLButtonElement | null>(null)
 const cardRef = ref<HTMLDivElement | null>(null)
+const waterLoaded = ref(false)
 
 const onLoad = () => {
-  console.log('loaded')
-  isLoading.value = false
+  waterLoaded.value = true
 }
 
 const toggleFlip = () => {
@@ -27,6 +28,25 @@ const onClickAway = (e: Event) => {
   ) {
     isFormFlipped.value = false
   }
+}
+
+const promises = Promise.allSettled([
+  document.fonts.ready,
+  loadImage('/images/water-maps.jpg'),
+  loadImage(AvaImg),
+  loadImage('/images/water.jpg')
+])
+promises.then(() => {
+  assetsLoaded.value = true
+})
+
+function loadImage(url: string) {
+  return new Promise((resolve, reject) => {
+    const imageClone = new Image()
+    imageClone.src = url
+    imageClone.onload = resolve
+    imageClone.onerror = reject
+  })
 }
 
 onMounted(() => {
@@ -45,7 +65,7 @@ function functionRef(el: any) {
 <template>
   <main>
     <WaterBackground @load="onLoad" />
-    <div v-if="isLoading" class="preloader-wrapper">
+    <div v-if="!(assetsLoaded && waterLoaded)" class="preloader-wrapper">
       <Preloader />
     </div>
 
