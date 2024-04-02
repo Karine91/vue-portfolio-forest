@@ -12,7 +12,7 @@
 defineProps<{ link: string; iconClass?: string }>()
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .socials-item {
   margin-right: 25px;
   list-style: none;

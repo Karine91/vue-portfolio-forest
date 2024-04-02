@@ -1,6 +1,6 @@
 <script setup lang="tsx">
 import AvaImg from '@/assets/images/ava.jpg'
-import Socials from './socials/SocialsList.vue'
+import Socials from '@/components/socials/SocialsList.vue'
 import { RouterLink } from 'vue-router'
 
 const NavLink = (props: { link: string; title: string }) => {

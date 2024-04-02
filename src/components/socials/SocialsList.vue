@@ -1,7 +1,7 @@
 <template>
   <ul class="socials">
-    <SocialItem v-for="item in socials" :key="item.id" :link="item.link">
-      <component :is="item.icon"></component>
+    <SocialItem :class="itemClass" v-for="item in socials" :key="item.id" :link="item.link">
+      <component :is="item.icon" :class="item.class"></component>
     </SocialItem>
   </ul>
 </template>
@@ -11,20 +11,24 @@ import SocialItem from './SocialItem.vue'
 import FacebookIcon from '@/components/icons/IconFacebook.vue'
 import GitHubIcon from '@/components/icons/IconGithub.vue'
 import LinkedInIcon from '@/components/icons/IconLinkedin.vue'
+defineProps(['itemClass'])
 
 const socials = [
   {
     icon: FacebookIcon,
+    class: 'facebook-icon',
     id: '1',
     link: 'https://www.facebook.com/gkarine91/'
   },
   {
     icon: GitHubIcon,
+    class: 'github-icon',
     id: '2',
     link: 'https://github.com/Karine91'
   },
   {
     icon: LinkedInIcon,
+    class: 'linkedin-icon',
     id: '3',
     link: 'https://www.linkedin.com/in/karinehiulumian/'
   }
@@ -39,5 +43,10 @@ const socials = [
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .github-icon {
+    position: relative;
+    top: 2px;
+  }
 }
 </style>
