@@ -2,6 +2,8 @@
 import TheHeader from '@/components/TheHeader.vue'
 import pageBg from '@/assets/images/heroBg.jpg'
 import PortfolioHeaderTitle from '@/components/icons/PortfolioHeaderTitle.vue'
+import UserInfo from './UserInfo.vue'
+import ArrowDown from '@/components/icons/ArrowDown.vue'
 </script>
 
 <template>
@@ -12,8 +14,14 @@ import PortfolioHeaderTitle from '@/components/icons/PortfolioHeaderTitle.vue'
     <div class="back-title">
       <PortfolioHeaderTitle />
     </div>
+    <TheHeader />
+    <div class="hero">
+      <UserInfo class="user-info" />
+    </div>
+    <div class="arrow-bottom">
+      <ArrowDown class="arrow-icon" />
+    </div>
   </div>
-  <TheHeader />
 </template>
 
 <style lang="scss" scoped>
@@ -23,6 +31,10 @@ import PortfolioHeaderTitle from '@/components/icons/PortfolioHeaderTitle.vue'
   min-height: 600px;
   height: 100vh;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .bg,
@@ -42,6 +54,28 @@ import PortfolioHeaderTitle from '@/components/icons/PortfolioHeaderTitle.vue'
   min-height: 150%;
   @include tablets {
     max-width: none;
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  color: white;
+}
+
+.user-info :deep(.user-description) {
+  color: $white;
+}
+
+.arrow-bottom {
+  padding-bottom: 90px;
+  position: relative;
+
+  .arrow-icon {
+    width: 26px;
+    height: 16px;
   }
 }
 </style>

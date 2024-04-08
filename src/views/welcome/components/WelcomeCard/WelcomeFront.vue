@@ -2,6 +2,7 @@
 import AvaImg from '@/assets/images/ava.jpg'
 import Socials from '@/components/socials/SocialsList.vue'
 import { RouterLink } from 'vue-router'
+import UserInfo from '@/components/UserInfo.vue'
 
 const NavLink = (props: { link: string; title: string }) => {
   return (
@@ -20,11 +21,7 @@ const links = [
 
 <template>
   <div class="wrapper">
-    <div class="user-picture">
-      <img :src="AvaImg" alt="" class="user-image" />
-    </div>
-    <div class="name">Karine Hiulumian</div>
-    <p class="description">Developer's personal website</p>
+    <UserInfo />
     <Socials />
   </div>
   <ul class="navigation">
@@ -35,38 +32,10 @@ const links = [
 </template>
 
 <style lang="scss" scoped>
-.name {
-  color: $white;
-  font-size: 28px;
-  margin-bottom: 10px;
-  line-height: 1;
-  font-family: 'Roboto-Medium';
-}
-
-.description {
-  font-size: 16px;
-  font-family: 'Roboto-Regular';
-  color: rgba($white, 0.8);
-  margin-bottom: 30px;
-}
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.user-picture {
-  border-radius: 50%;
-  width: 140px;
-  height: 140px;
-  overflow: hidden;
-  background-color: #fff;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-
-.user-image {
-  width: 100%;
-  display: block;
 }
 
 .navigation {

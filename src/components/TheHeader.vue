@@ -10,7 +10,7 @@ import Socials from './socials/SocialsList.vue'
 
 <style lang="scss" scoped>
 header {
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
