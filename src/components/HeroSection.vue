@@ -4,6 +4,7 @@ import pageBg from '@/assets/images/heroBg.jpg'
 import PortfolioHeaderTitle from '@/components/icons/PortfolioHeaderTitle.vue'
 import UserInfo from './UserInfo.vue'
 import ArrowDown from '@/components/icons/ArrowDown.vue'
+import TriangleSection from '@/components/TriangleSection.vue'
 </script>
 
 <template>
@@ -19,8 +20,11 @@ import ArrowDown from '@/components/icons/ArrowDown.vue'
       <UserInfo class="user-info" />
     </div>
     <div class="arrow-bottom">
-      <ArrowDown class="arrow-icon" />
+      <button class="icon-button">
+        <ArrowDown class="arrow-icon" />
+      </button>
     </div>
+    <TriangleSection />
   </div>
 </template>
 
@@ -70,12 +74,17 @@ import ArrowDown from '@/components/icons/ArrowDown.vue'
 }
 
 .arrow-bottom {
-  padding-bottom: 90px;
   position: relative;
+  display: flex;
+  justify-content: center;
+
+  .icon-button {
+    margin-bottom: 5px;
+  }
 
   .arrow-icon {
-    width: 26px;
-    height: 16px;
+    height: 20px;
+    color: rgba($white, 0.7);
   }
 }
 </style>
