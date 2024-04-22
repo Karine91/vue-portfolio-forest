@@ -4,7 +4,6 @@ import pageBg from '@/assets/images/heroBg.jpg'
 import PortfolioHeaderTitle from '@/components/icons/PortfolioHeaderTitle.vue'
 import UserInfo from './UserInfo.vue'
 import ArrowDown from '@/components/icons/ArrowDown.vue'
-import TriangleSection from '@/components/TriangleSection.vue'
 </script>
 
 <template>
@@ -24,7 +23,6 @@ import TriangleSection from '@/components/TriangleSection.vue'
         <ArrowDown class="arrow-icon" />
       </button>
     </div>
-    <TriangleSection />
   </div>
 </template>
 
@@ -77,6 +75,7 @@ import TriangleSection from '@/components/TriangleSection.vue'
   position: relative;
   display: flex;
   justify-content: center;
+  padding-bottom: 90px;
 
   .icon-button {
     margin-bottom: 5px;

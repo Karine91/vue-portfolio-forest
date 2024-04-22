@@ -67,6 +67,15 @@ h3 {
   }
 }
 
+.heading-1 {
+  @extend h1;
+  display: inline-block;
+  margin-top: 0;
+  position: relative;
+  padding: 0 1em;
+  @include headingUnderscore;
+}
+
 .heading-2 {
   @extend h2;
   display: inline-block;
@@ -74,23 +83,7 @@ h3 {
   position: relative;
   padding-bottom: 23px;
   text-transform: uppercase;
-  &:after {
-    content: '';
-    display: block;
-    width: 33.33%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    margin: 0 auto;
-    background-color: $white;
-  }
-
-  @include media(420px) {
-  }
-  @include mobile {
-  }
+  @include headingUnderscore;
 }
 .heading-2_offset-no {
   margin: 0;

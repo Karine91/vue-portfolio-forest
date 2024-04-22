@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import MainLayout from '@/layouts/MainLayout.vue'
+import AboutMeSection from './AboutMeSection.vue'
+import TriangleSection from '@/components/TriangleSection.vue'
 </script>
 
 <template>
   <MainLayout>
-    <div class="about">
-      <h1>This is an about page</h1>
-    </div>
+    <TriangleSection class="triangle" />
+    <AboutMeSection />
   </MainLayout>
 </template>
 
-<style>
+<style scoped lang="scss">
+.triangle {
+  color: #ebefe2;
+}
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;

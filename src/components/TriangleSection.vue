@@ -19,7 +19,7 @@
   margin-top: -175px;
   position: relative;
   display: flex;
-  height: 175px;
+
   z-index: 1000;
 }
 .triangle-bg {
@@ -28,13 +28,13 @@
   left: 0;
   right: 0;
   display: flex;
-  height: 100%;
+  height: 175px;
 }
 
 .triangle {
   width: 100%;
   height: 100%;
-  fill: $white;
+  fill: currentColor;
   flex-grow: 1;
 }
 </style>

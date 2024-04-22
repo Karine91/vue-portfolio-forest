@@ -34,3 +34,18 @@
     @content;
   }
 }
+
+@mixin headingUnderscore {
+  &:after {
+    content: '';
+    display: block;
+    width: 33.33%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    margin: 0 auto;
+    background-color: currentColor;
+  }
+}
