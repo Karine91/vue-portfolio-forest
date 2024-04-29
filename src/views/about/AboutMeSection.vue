@@ -8,10 +8,12 @@ const skills = [
     skillGroupName: 'Frontend',
     skills: [
       {
+        id: '11',
         skillName: 'HTML5',
         proficiencyLevel: 80
       },
       {
+        id: '12',
         skillName: 'CSS3',
         proficiencyLevel: 80
       }
@@ -22,10 +24,12 @@ const skills = [
     skillGroupName: 'Backend',
     skills: [
       {
+        id: '21',
         skillName: 'Node.js',
         proficiencyLevel: 40
       },
       {
+        id: '22',
         skillName: 'MongoDB',
         proficiencyLevel: 70
       }
@@ -63,7 +67,7 @@ const skills = [
   </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 section {
   background-color: #ebefe2;
   display: flex;
@@ -118,6 +122,10 @@ section {
         object-fit: cover;
       }
     }
+  }
+
+  .skills {
+    width: 100%;
   }
 }
 </style>

@@ -1,6 +1,7 @@
 export interface ISkill {
   skillName: string
   proficiencyLevel: number
+  id: string
 }
 
 export interface ISkillGroup {
