@@ -13,13 +13,12 @@ import TriangleSection from '@/components/TriangleSection.vue'
 
 <style scoped lang="scss">
 .triangle {
-  color: #ebefe2;
-}
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+  :deep(.left) {
+    fill: #ebefe2;
+  }
+
+  :deep(.right) {
+    fill: #f4f5f0;
   }
 }
 </style>

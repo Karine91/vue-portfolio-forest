@@ -34,6 +34,17 @@ const skills = [
         proficiencyLevel: 70
       }
     ]
+  },
+  {
+    id: '3',
+    skillGroupName: 'Workflow',
+    skills: [
+      {
+        id: '31',
+        skillName: 'Git',
+        proficiencyLevel: 80
+      }
+    ]
   }
 ]
 </script>
@@ -96,16 +107,32 @@ section {
   .about-left,
   .about-right {
     width: 50%;
+    padding-bottom: 50px;
+    @include large {
+      padding-bottom: 30px;
+    }
   }
 
   .about-left {
     display: flex;
     align-items: flex-start;
+    background-color: #ebefe2;
+
+    @include large {
+      flex-direction: column;
+      align-items: center;
+
+      .heading-1 {
+        margin-bottom: 32px;
+      }
+    }
   }
   .about-right {
     display: flex;
     flex-direction: column;
-    align-items: center;
+
+    background-color: #f4f5f0;
+    padding: 0 40px;
   }
 
   .about-me {
@@ -121,6 +148,12 @@ section {
         width: 100%;
         object-fit: cover;
       }
+    }
+
+    padding: 0 20px;
+
+    @include large {
+      padding: 0 80px;
     }
   }
 

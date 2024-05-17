@@ -7,7 +7,10 @@ const { proficiencyLevel, skillName } = props
 
 const circleStyle = computed(() => {
   if (props.inView) {
-    return { strokeDasharray: Math.round((proficiencyLevel / 100) * 314) }
+    return {
+      strokeDasharray: `${(proficiencyLevel / 100) * 314} 314`,
+      opacity: proficiencyLevel > 70 ? 1 : 0.6
+    }
   }
   return {}
 })
