@@ -8,17 +8,17 @@
 
 <script setup lang="ts">
 import SocialItem from './SocialItem.vue'
-import FacebookIcon from '@/components/icons/IconFacebook.vue'
 import GitHubIcon from '@/components/icons/IconGithub.vue'
 import LinkedInIcon from '@/components/icons/IconLinkedin.vue'
+import Instagram from '@/components/icons/IconInstagram.vue'
 defineProps(['itemClass'])
 
 const socials = [
   {
-    icon: FacebookIcon,
-    class: 'facebook-icon',
+    icon: Instagram,
+    class: 'insta-icon',
     id: '1',
-    link: 'https://www.facebook.com/gkarine91/'
+    link: 'https://www.instagram.com/gkarine91/'
   },
   {
     icon: GitHubIcon,

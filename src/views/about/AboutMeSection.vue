@@ -63,8 +63,8 @@ const skills = [
 
         <h2 class="heading-2">Who I am</h2>
         <p>
-          I'm front-end developer from Ukraine. Developing modern websites and applications. I like
-          to do interesting and modern projects.
+          I'm front-end developer from Ukraine. Currently live in Slovakia. Developing modern
+          websites and applications. I like to do interesting and modern projects.
         </p>
       </div>
     </div>

@@ -4,6 +4,7 @@ import WaterBackground from './components/waterBackground/WaterBackground.vue'
 import WelcomeCard from './components/WelcomeCard/WelcomeCard.vue'
 import Preloader from '@/components/ThePreloader.vue'
 import AvaImg from '@/assets/images/ava.jpg'
+import TheCopyright from '@/components/TheCopyright.vue'
 
 const assetsLoaded = ref(false)
 const isFormFlipped = ref(false)
@@ -86,6 +87,7 @@ function functionRef(el: any) {
           :functionRef="functionRef"
         />
       </div>
+      <TheCopyright />
     </div>
   </main>
 </template>
@@ -191,12 +193,6 @@ main {
   }
 }
 
-.copyright {
-  color: $white;
-  font-family: 'Roboto-Light';
-  font-size: 16px;
-}
-
 .loadingBg {
   background-color: $green;
   position: absolute;
@@ -205,6 +201,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+}
+
+:deep(.copyright) {
+  font-family: 'Roboto-Regular';
   color: white;
 }
 </style>

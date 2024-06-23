@@ -1,16 +1,24 @@
 <template>
   <svg
+    version="1.1"
+    id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
-    shape-rendering="geometricPrecision"
-    text-rendering="geometricPrecision"
-    image-rendering="optimizeQuality"
-    fill-rule="evenodd"
-    clip-rule="evenodd"
-    viewBox="0 0 512.02 319.26"
-    fill="currentColor"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px"
+    y="0px"
+    width="42.736px"
+    height="27.435px"
+    viewBox="0 0 42.736 27.435"
+    enable-background="new 0 0 42.736 27.435"
+    xml:space="preserve"
   >
-    <path
-      d="M5.9 48.96 48.97 5.89c7.86-7.86 20.73-7.84 28.56 0l178.48 178.48L434.5 5.89c7.86-7.86 20.74-7.82 28.56 0l43.07 43.07c7.83 7.84 7.83 20.72 0 28.56l-192.41 192.4-.36.37-43.07 43.07c-7.83 7.82-20.7 7.86-28.56 0l-43.07-43.07-.36-.37L5.9 77.52c-7.87-7.86-7.87-20.7 0-28.56z"
-    />
+    <g>
+      <path
+        fill="currentColor"
+        d="M22.563,26.938c-0.663,0.663-1.724,0.663-2.387,0L0.498,7.286c-0.663-0.663-0.663-1.75,0-2.413L4.9,0.497
+		c0.663-0.663,1.724-0.663,2.387,0l14.082,14.082L35.45,0.497c0.663-0.663,1.725-0.663,2.388,0l4.401,4.376
+		c0.663,0.663,0.663,1.75,0,2.413L22.563,26.938z"
+      />
+    </g>
   </svg>
 </template>
