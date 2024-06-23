@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Copyright from './TheCopyright.vue'
 import NavigationMenu from './NavigationMenu.vue'
+import SocialsList from './socials/SocialsList.vue'
 
 const links = [{ link: '/', title: 'Authorization' }]
 </script>
@@ -14,8 +15,14 @@ const links = [{ link: '/', title: 'Authorization' }]
       </div>
       <div class="middle">
         <NavigationMenu :extralinks="links" class="footer-nav-menu" />
+        <SocialsList />
       </div>
-      <div class="right"></div>
+      <div class="right">
+        <i
+          >Always code as if the guy who ends up maintaining your code will be a violent psychopath
+          who knows where you live. <br /><strong>- Martin Golding</strong></i
+        >
+      </div>
     </div>
     <Copyright />
   </footer>
@@ -40,7 +47,9 @@ footer {
 
   div {
     border-right: 1px solid rgba(white, 0.2);
-    padding: 0 15px;
+    padding: 0 30px;
+    flex: 1;
+
     &:last-child {
       border: none;
     }
@@ -48,6 +57,20 @@ footer {
 
   .left {
     font-family: 'Roboto-Light';
+    line-height: 1.5;
+  }
+
+  .middle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .right {
+    font-family: 'Roboto-Light';
+    color: rgba(white, 0.5);
+    line-height: 1.5;
   }
 }
 
@@ -65,5 +88,11 @@ footer:deep(.copyright) {
   background-color: rgba($green, 0.85);
   color: white;
   margin-top: auto;
+}
+
+:deep(.socials-link) {
+  .icon:hover {
+    color: white;
+  }
 }
 </style>
