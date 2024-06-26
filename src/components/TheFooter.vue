@@ -3,7 +3,7 @@ import Copyright from './TheCopyright.vue'
 import NavigationMenu from './NavigationMenu.vue'
 import SocialsList from './socials/SocialsList.vue'
 
-const links = [{ link: '/', title: 'Authorization' }]
+import { routerLinks as links } from '@/router'
 </script>
 
 <template>
@@ -14,13 +14,13 @@ const links = [{ link: '/', title: 'Authorization' }]
         when I was studying there.
       </div>
       <div class="middle">
-        <NavigationMenu :extralinks="links" class="footer-nav-menu" />
+        <NavigationMenu :links="links" class="footer-nav-menu" />
         <SocialsList />
       </div>
       <div class="right">
-        <i
+        <em
           >Always code as if the guy who ends up maintaining your code will be a violent psychopath
-          who knows where you live. <br /><strong>- Martin Golding</strong></i
+          who knows where you live. <br /><strong>- Martin Golding</strong></em
         >
       </div>
     </div>

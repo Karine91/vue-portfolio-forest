@@ -1,7 +1,8 @@
 <script setup lang="tsx">
 import { RouterLink } from 'vue-router'
+import { routerLinks } from '@/router'
 
-const props = defineProps<{ extralinks?: { link: string; title: string }[] }>()
+const props = defineProps<{ links?: { link: string; title: string }[] }>()
 
 const NavLink = (props: { link: string; title: string }) => {
   return (
@@ -11,18 +12,12 @@ const NavLink = (props: { link: string; title: string }) => {
   )
 }
 
-const defaultLinks = [
-  { link: '/works', title: 'My works' },
-  { link: '/about', title: 'About me' },
-  { link: '/blog', title: 'Blog' }
-]
-
-const links = [...defaultLinks, ...(props.extralinks || [])]
+const _links = props.links ?? routerLinks.slice(0, -1)
 </script>
 
 <template>
   <ul class="navigation">
-    <li v-for="item in links" :key="item.link" class="navigation-item">
+    <li v-for="item in _links" :key="item.link" class="navigation-item">
       <NavLink :link="item.link" :title="item.title" />
     </li>
   </ul>

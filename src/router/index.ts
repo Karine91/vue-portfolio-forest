@@ -20,4 +20,11 @@ const router = createRouter({
   ]
 })
 
+export const routerLinks = [
+  { link: '/works', title: 'My works' },
+  { link: '/about', title: 'About me' },
+  { link: '/blog', title: 'Blog' },
+  { link: '/', title: 'Authorization' }
+]
+
 export default router
