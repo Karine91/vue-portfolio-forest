@@ -14,8 +14,10 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.6",
+    "@vueuse/motion": "^2.2.3",
     "curry": "^1.2.0",
     "gsap": "^3.12.5",
+    "hamburgers": "^1.2.1",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"

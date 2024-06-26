@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import Socials from './socials/SocialsList.vue'
+import HeaderMenu from './HeaderMenu.vue'
 </script>
 
 <template>
   <header>
     <Socials itemClass="header-socials-item" />
+    <HeaderMenu />
   </header>
 </template>
 
