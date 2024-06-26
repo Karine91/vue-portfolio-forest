@@ -34,9 +34,11 @@ onUnmounted(() => {
   document.removeEventListener('scroll', onScroll)
 })
 
-const moveDown = (e: Event) => {
+const moveDown = () => {
   const nextSection = heroSectionRef.value?.getBoundingClientRect()
-  window.scrollTo({ top: nextSection?.bottom, behavior: 'smooth' })
+  if (nextSection) {
+    window.scrollTo({ top: window.scrollY + nextSection.bottom, behavior: 'smooth' })
+  }
 }
 </script>
 
