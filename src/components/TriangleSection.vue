@@ -20,7 +20,7 @@
   position: relative;
   display: flex;
 
-  z-index: 1000;
+  z-index: 1;
 }
 .triangle-bg {
   position: absolute;

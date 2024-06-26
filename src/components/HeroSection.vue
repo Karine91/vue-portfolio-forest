@@ -4,22 +4,56 @@ import pageBg from '@/assets/images/heroBg.jpg'
 import PortfolioHeaderTitle from '@/components/icons/PortfolioHeaderTitle.vue'
 import UserInfo from './UserInfo.vue'
 import ArrowDown from '@/components/icons/ArrowDown.vue'
+
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const bgRef = ref<HTMLElement | null>(null)
+const titleRef = ref<HTMLElement | null>(null)
+const userRef = ref<HTMLElement | null>(null)
+const heroSectionRef = ref<HTMLElement | null>(null)
+
+const move = (element: HTMLElement, wScroll: number, amount: number) => {
+  const delta = -wScroll / amount
+  element.style.transform = `translate3d(0, ${delta}%, 0)`
+}
+
+const onScroll = () => {
+  const wScroll = window.scrollY
+  if (bgRef.value && titleRef.value && userRef.value) {
+    move(bgRef.value, wScroll, 45)
+    move(titleRef.value, wScroll, 10)
+    move(userRef.value, wScroll, 8)
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('scroll', onScroll)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('scroll', onScroll)
+})
+
+const moveDown = (e: Event) => {
+  const nextSection = heroSectionRef.value?.getBoundingClientRect()
+  window.scrollTo({ top: nextSection?.bottom, behavior: 'smooth' })
+}
 </script>
 
 <template>
-  <div class="hero-section">
-    <div class="bg">
+  <div class="hero-section" ref="heroSectionRef">
+    <div class="bg" ref="bgRef">
       <img :src="pageBg" alt="" />
     </div>
-    <div class="back-title">
+    <div class="back-title" ref="titleRef">
       <PortfolioHeaderTitle />
     </div>
     <TheHeader />
-    <div class="hero">
+    <div class="hero" ref="userRef">
       <UserInfo class="user-info" />
     </div>
     <div class="arrow-bottom">
-      <button class="icon-button">
+      <button class="icon-button" @click="moveDown">
         <ArrowDown class="arrow-icon" />
       </button>
     </div>
@@ -76,6 +110,7 @@ import ArrowDown from '@/components/icons/ArrowDown.vue'
   display: flex;
   justify-content: center;
   padding-bottom: 90px;
+  z-index: 10;
 
   .icon-button {
     margin-bottom: 5px;
