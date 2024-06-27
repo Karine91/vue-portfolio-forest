@@ -33,7 +33,7 @@ const toggleMenu = () => {
       opacity: 0
     }"
     :enter="{
-      clipPath: 'circle(200vh at calc(100% - 50px) 42px)',
+      clipPath: 'circle(150vw at calc(100% - 50px) 42px)',
       opacity: 1,
       transition: {
         type: 'spring',
