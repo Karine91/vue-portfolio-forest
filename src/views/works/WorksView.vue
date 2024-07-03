@@ -8,6 +8,7 @@ import MyWorksSection from './MyWorksSection.vue'
   <MainLayout>
     <TriangleSection class="triangle" />
     <MyWorksSection />
+    <div style="height: 100vh"></div>
   </MainLayout>
 </template>
 

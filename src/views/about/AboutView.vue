@@ -16,7 +16,7 @@ import ContactSection from './ContactSection.vue'
 <style scoped lang="scss">
 .triangle {
   :deep(.left) {
-    fill: #ebefe2;
+    fill: $lightgreen;
   }
 
   :deep(.right) {

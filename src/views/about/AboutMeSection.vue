@@ -80,7 +80,7 @@ const skills = [
 
 <style lang="scss" scoped>
 section {
-  background-color: #ebefe2;
+  background-color: $lightgreen;
   display: flex;
 
   margin-top: 175px;
@@ -117,7 +117,7 @@ section {
   .about-left {
     display: flex;
     align-items: flex-start;
-    background-color: #ebefe2;
+    background-color: $lightgreen;
 
     @include large {
       flex-direction: column;
