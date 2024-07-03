@@ -78,34 +78,35 @@ const prevSlide = () => {
     </div>
     <div class="slider">
       <div class="caption">
-        <h2
+        <div
+          class="caption-inner"
+          :key="currentWork.name"
           v-motion
-          :key="currentWork.id"
           :initial="{
             opacity: 0
           }"
           :enter="{
             opacity: 1,
             transition: {
-              duration: 300,
               type: 'keyframes',
-              ease: 'easeOut'
+              ease: 'easeIn'
             }
           }"
-          class="heading-2"
         >
-          {{ currentWork.name }}
-        </h2>
-        <div class="techs">
-          <div class="techs-item" v-for="(tech, ind) in currentWork.technologies" :key="ind">
-            {{ tech }} {{ ind === currentWork.technologies.length - 1 ? '' : ',' }}
+          <h2 class="heading-2">
+            {{ currentWork.name }}
+          </h2>
+          <div class="techs">
+            <div class="techs-item" v-for="(tech, ind) in currentWork.technologies" :key="ind">
+              {{ tech }} {{ ind === currentWork.technologies.length - 1 ? '' : ',' }}
+            </div>
           </div>
-        </div>
 
-        <a class="button-link" :href="currentWork.link" target="_blank">
-          <LinkIcon class="link-icon" />
-          Visit site
-        </a>
+          <a class="button-link" :href="currentWork.link" target="_blank">
+            <LinkIcon class="link-icon" />
+            Visit site
+          </a>
+        </div>
       </div>
       <div class="preview">
         <img
@@ -217,10 +218,15 @@ h1 {
 .caption {
   grid-area: caption;
   background-color: $lightgreen;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+  .caption-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
   .heading-2 {
     max-width: 350px;
