@@ -1,7 +1,9 @@
+<script setup lang="ts"></script>
+
 <template>
   <section>
     <div class="title">
-      <h2 class="heading-1">What say about me</h2>
+      <h2 class="heading-1">What clients say about me</h2>
     </div>
   </section>
 </template>
@@ -28,6 +30,8 @@ h2 {
   background-repeat: no-repeat;
   white-space: nowrap;
   background-position: center center;
+  max-width: 700px;
+  text-wrap: wrap;
   &.heading-1 {
     padding: 0.5em 1em;
     text-transform: uppercase;

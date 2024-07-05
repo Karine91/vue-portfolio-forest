@@ -30,7 +30,7 @@ import { routerLinks as links } from '@/router'
 
 <style lang="scss" scoped>
 footer {
-  height: 185px;
+  min-height: 185px;
   width: 100%;
   position: absolute;
   bottom: 0;
