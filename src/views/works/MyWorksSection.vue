@@ -89,7 +89,8 @@ const prevSlide = () => {
             opacity: 1,
             transition: {
               type: 'keyframes',
-              ease: 'easeIn'
+              ease: 'easeIn',
+              duration: 1000
             }
           }"
         >
@@ -120,7 +121,7 @@ const prevSlide = () => {
             opacity: 1,
             scale: 1,
             transition: {
-              duration: 500,
+              duration: 1000,
               type: 'keyframes',
               ease: 'easeOut'
             }

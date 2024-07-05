@@ -2,13 +2,14 @@
 import MainLayout from '@/layouts/MainLayout.vue'
 import TriangleSection from '@/components/TriangleSection.vue'
 import MyWorksSection from './MyWorksSection.vue'
+import TestimonialsSection from './TestimonialsSection.vue'
 </script>
 
 <template>
   <MainLayout>
     <TriangleSection class="triangle" />
     <MyWorksSection />
-    <div style="height: 100vh"></div>
+    <TestimonialsSection />
   </MainLayout>
 </template>
 
