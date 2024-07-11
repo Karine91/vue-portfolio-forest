@@ -1,10 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import TestimonialsList from './testimonials/TestimonialsList.vue'
+</script>
 
 <template>
   <section>
     <div class="title">
       <h2 class="heading-1">What clients say about me</h2>
     </div>
+    <TestimonialsList />
   </section>
 </template>
 
