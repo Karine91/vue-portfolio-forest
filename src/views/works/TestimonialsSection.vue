@@ -8,6 +8,7 @@ import TestimonialsList from './testimonials/TestimonialsList.vue'
       <h2 class="heading-1">What clients say about me</h2>
     </div>
     <TestimonialsList />
+    <div style="height: 1000px"></div>
   </section>
 </template>
 
