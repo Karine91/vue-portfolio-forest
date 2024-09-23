@@ -8,26 +8,10 @@ import { imagePreload } from '@/utils/imagePreload'
 const works = [
   {
     id: '1',
-    name: "online education school's site",
-    technologies: [
-      'HTML',
-      'CSS',
-      'Javascript',
-      'react',
-      'react-query',
-      'HTML',
-      'CSS',
-      'Javascript',
-      'react',
-      'react-query',
-      'HTML',
-      'CSS',
-      'Javascript',
-      'react',
-      'react-query'
-    ],
-    preview: 'mock-works-images/work-1.png',
-    link: 'google.com'
+    name: 'Pathfinding Algorithms Visualizer',
+    technologies: ['HTML', 'SCSS', 'Javascript', 'React', 'Vite'],
+    preview: 'projects-images/maze.JPG',
+    link: 'https://karine91.github.io/maze/'
   },
   {
     id: '2',
